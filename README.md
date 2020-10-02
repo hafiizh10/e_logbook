@@ -3,7 +3,8 @@ E-Logbook berfungsi sebagai mengukur kinerja pegawai dengan laporan kegiatan seh
 
 ## Tampilan Web
 ![alt tag](https://github.com/hafiizh10/e_logbook/blob/master/assets/images/view.jpg)<br>
-![alt tag](https://github.com/hafiizh10/e_logbook/blob/master/assets/images/view2.jpg)
+![alt tag](https://github.com/hafiizh10/e_logbook/blob/master/assets/images/view2.jpg)<br>
+![alt tag](https://github.com/hafiizh10/e_logbook/blob/master/assets/images/view3.jpg)
 
 ## Web ini dibuat menggunakan
 - Framework Codeigniter 3
