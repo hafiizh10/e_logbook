@@ -111,4 +111,15 @@ class User extends CI_Controller
             }
         }
     }
+
+    public function scan()
+    {
+        $data['title'] = 'Scan QR Code';
+        $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('user/scan', $data);
+        $this->load->view('templates/footer');
+    }
 }
