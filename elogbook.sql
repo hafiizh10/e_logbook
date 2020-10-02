@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2020 at 09:22 AM
+-- Generation Time: Oct 02, 2020 at 03:09 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -37,7 +37,7 @@ CREATE TABLE `tb_logbook` (
   `tindakan` text NOT NULL,
   `ket` text NOT NULL,
   `nama` varchar(128) NOT NULL,
-  `level` varchar(10) NOT NULL,
+  `level` varchar(50) NOT NULL,
   `kode` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -48,9 +48,11 @@ CREATE TABLE `tb_logbook` (
 INSERT INTO `tb_logbook` (`id`, `nip`, `tgl`, `kejadian`, `lokasi`, `resiko`, `tindakan`, `ket`, `nama`, `level`, `kode`) VALUES
 (2, '31011', '2020-05-10', 'Jaringan Internet Down', 'Gedung Adminstrasi', 'High', 'Menghubungi pihak Telkom', 'Sudah di tindak lanjuti permasalahan selesai', 'Hafiizh Zoelva Khairani', 'Admin', '0.1.1'),
 (4, '310114', '2020-12-12', 'Ruang section head kebanjiran', 'Unit Section Head', 'High', 'Membersihkan sisa banjir', 'Ruang sudah kembali bersih', 'Hafiizh Zoelva', 'Staf', '0.1.4'),
-(5, '310113', '2020-02-20', 'Ruang staf terkunci', 'Ruang staf', 'High', 'Mencari kunci ruangan', 'Ruang sudah dapat dibuka kembali', 'Khairani', 'Section He', '0.1.4'),
-(7, '31011', '2020-09-23', 'Server mengalami gangguan', 'Ruang Server', 'Medium', 'Memperbaiki server', 'Server kembali normal', 'Zoelva', 'Admin', '0.1.1'),
-(8, '310112', '2020-02-20', 'Listrik ruangan padam', 'Ruangan General Affair', 'Low', 'Menghidupkan saklar listrik dari off ke on', 'Sudah diperbaiki', 'Hafiizh', 'Department', '0.0.3');
+(5, '310113', '2020-02-20', 'Ruang staf terkunci', 'Ruang staf', 'High', 'Mencari kunci ruangan', 'Ruang sudah dapat dibuka kembali', 'Khairani', 'Section Head', '0.1.4'),
+(7, '31011', '2020-09-23', 'Server mengalami gangguan', 'Ruang Server', 'Medium', 'Memperbaiki server', 'Server kembali normal', 'Hafiizh Zoelva Khairani', 'Admin', '0.1.1'),
+(8, '310112', '2020-02-20', 'Listrik ruangan padam', 'Ruangan General Affair', 'Low', 'Menghidupkan saklar listrik dari off ke on', 'Sudah diperbaiki', 'Hafiizh', 'Department', '0.0.3'),
+(13, '310113', '2020-09-26', 'Terjadi percikan api di kabel', 'Ruang Staf', 'High', 'Mematikan arus listrik', 'Keadaan sudah normal kembali', 'Khairani', 'Section Head', '0.1.4'),
+(14, '310293', '2020-09-29', 'Membuat program E-Logbook', 'Ruang staf IT', 'Medium', 'Membuat program E-Logbook', 'Membuat program E-Logbook', 'Khairani Zoelva', 'Staf', '0.1.1');
 
 -- --------------------------------------------------------
 
@@ -107,12 +109,13 @@ INSERT INTO `tb_unit` (`id_unit`, `kode`, `unit`) VALUES
 
 CREATE TABLE `tb_user` (
   `id` int(11) NOT NULL,
-  `nip` varchar(15) NOT NULL,
+  `nip` varchar(20) NOT NULL,
   `name` varchar(128) NOT NULL,
   `username` varchar(128) NOT NULL,
   `password` varchar(2556) NOT NULL,
   `jabatan` varchar(20) NOT NULL,
   `kode` varchar(10) NOT NULL,
+  `qr_code` varchar(100) NOT NULL,
   `image` varchar(128) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -121,11 +124,12 @@ CREATE TABLE `tb_user` (
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `nip`, `name`, `username`, `password`, `jabatan`, `kode`, `image`, `role_id`) VALUES
-(1, '31011', 'Hafiizh Zoelva Khairani', 'zoelva', '$2y$10$.EysfTn8nrVbqIE4f6HUwuxNB6YeCRePau9Fiq1vvIMj2.BuzHcvW', 'Admin', '0.1.1', 'Default.jpg', 1),
-(11, '310112', 'Hafiizh', 'hafiizh', '$2y$10$8RtJNnnAGFKGEMJQp5EvdejnAg/n9XYNRf1/ge0rchYeqBjIbko.y', 'Department Head', '0.0.3', 'default.jpg', 2),
-(12, '310113', 'Khairani', 'khairani', '$2y$10$pB99S5kMjNLfnQJBqHGCiuwDcX4BbZvGaVluXZdwkdTIhqzhg/bc2', 'Section Head', '0.1.4', 'default.jpg', 2),
-(13, '310114', 'Hafiizh Zoelva', 'zoelva10', '$2y$10$flWB.GRupO/zEFE1x2gJiuIKrsBMRgL3W3b5cn9qmfUO3GJcEK0Ea', 'Staf', '0.1.4', 'default.jpg', 2);
+INSERT INTO `tb_user` (`id`, `nip`, `name`, `username`, `password`, `jabatan`, `kode`, `qr_code`, `image`, `role_id`) VALUES
+(38, '31011', 'Hafiizh Zoelva Khairani', 'zoelva', '$2y$10$M5l8J7f3Uo.CKu6NFCzFqe8KeN2OIx1lWfgBlhPUE4t1ourwUXAN6', 'Section Head', '0.1.1', '31011.png', 'default.jpg', 1),
+(39, '310112', 'Hafiizh', 'hafiizh', '$2y$10$.6OqI2RR4zbqdyvaqchQu.1ECGFdDCDUzadSQDRC2ekdq.6gOaJSy', 'Department Head', '0.0.3', '310112.png', 'default.jpg', 2),
+(40, '310113', 'Khairani', 'khairani', '$2y$10$71D1XwZAh6zDnml2qKWoNuAAL5Ad.HzQMUrFddDGCYZAe0S5KVgr.', 'Section Head', '0.1.4', '310113.png', 'default.jpg', 2),
+(41, '310114', 'Hafiizh Zoelva', 'zoelva10', '$2y$10$p2FXMIhsNs9qdSFAh842ZOWUc6tDapBssH/A28TOR/SuljDAyyTia', 'Staf', '0.1.4', '310114.png', 'default.jpg', 2),
+(42, '310293', 'Khairani Zoelva', 'khairani10', '$2y$10$WVwjaXsEG7qzyQjNES0U2urWOfhZlvMXr1JoleQeG7CXNrFaqgj1C', 'Staf', '0.1.1', '310293.png', 'default.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -278,7 +282,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `tb_logbook`
 --
 ALTER TABLE `tb_logbook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_unit`
@@ -290,7 +294,7 @@ ALTER TABLE `tb_unit`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -314,7 +318,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -58,4 +58,23 @@ class Logbook_model extends CI_Model
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('tb_logbook', $data);
     }
+
+    public function getBookByNip($nip)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_logbook');
+        $this->db->where('tb_logbook.nip', $nip);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getUnitbyNip($nip)
+    {
+        $this->db->select('tb_user.kode,tb_unit.kode AS kode, tb_unit.unit');
+        $this->db->from('tb_user', 'tb_unit');
+        $this->db->join('tb_unit', 'tb_unit.kode=tb_user.kode');
+        $this->db->where('tb_user.nip', $nip);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

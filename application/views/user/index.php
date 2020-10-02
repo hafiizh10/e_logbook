@@ -20,6 +20,8 @@
                                     <?php endforeach; ?>
                                 </div>
                             </div>
+                            <h3 class="title-2 m-t-10">QR Code NIP</h3>
+                            <img src="<?= base_url('assets/qrcode/' . $user['qr_code']); ?>" />
                         </div>
                     </div>
                 </div>

@@ -69,4 +69,18 @@ class Fitur extends CI_Controller
             redirect('fitur');
         }
     }
+
+    public function logbook($nip)
+    {
+        $data['title'] = 'My E-Logbook';
+        $data['user'] = $this->db->get_where('tb_user', ['nip' => $nip])->row_array();
+
+        $data['logbookuser'] = $this->Logbook_model->getBookByNip($nip);
+        $data['unit'] = $this->Logbook_model->getUnitbyNip($nip);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('logbook/view_book', $data);
+        $this->load->view('templates/footer');
+    }
 }

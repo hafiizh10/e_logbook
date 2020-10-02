@@ -53,6 +53,13 @@ class Admin_model extends CI_Model
 
     public function addUser()
     {
+        $base_url = base_url();
+        $nip = $this->input->post('nip', true);
+        $qrCode = new Endroid\QrCode\QrCode($base_url . 'fitur/logbook/' . $nip . '');
+
+        $qrCode->writeFile('assets/qrcode/' . $nip . '.png');
+        $qr_code = $nip . '.png';
+
         $data = [
             "nip" => $this->input->post('nip', true),
             "name" => $this->input->post('name', true),
@@ -61,7 +68,8 @@ class Admin_model extends CI_Model
             'image' => 'default.jpg',
             "jabatan" => $this->input->post('jabatan', true),
             "kode" => $this->input->post('kode', true),
-            "role_id" => 2
+            "role_id" => 2,
+            "qr_code" => $qr_code
         ];
         $this->db->where('id', $this->input->post('id'));
         $this->db->insert('tb_user', $data);
@@ -69,6 +77,9 @@ class Admin_model extends CI_Model
 
     public function hapusUser($id)
     {
+        $data['gambar'] = $this->db->get_where('tb_user', ['id' => $id])->row_array();
+        $image = $data['gambar']['qr_code'];
+        unlink(FCPATH . 'assets/qrcode/' . $image);
         $this->db->delete('tb_user', ['id' => $id]);
     }
 
