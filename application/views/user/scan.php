@@ -54,6 +54,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <section class="scans">
+                                                    <h4>Hasil Scan</h4>
+                                                    <ul v-if="scans.length === 0">
+                                                        <li class="empty">Arahkan QR Code ke kamera</li>
+                                                    </ul>
+                                                    <transition-group name="scans" tag="ul">
+                                                        <a href="" v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</a>
+                                                    </transition-group>
+                                                    <!-- Gimana caranya biar hasil scan otomatis membuka dihalaman baru -->
+                                                </section>
                                     <div class="row m-t-10">
                                         <div class="col">
                                             <div class="preview-container">
