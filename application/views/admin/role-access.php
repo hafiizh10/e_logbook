@@ -29,8 +29,9 @@
                                     <td><?= $m['menu']; ?></td>
                                     <td>
                                         <div class="form-check">
-                                            <input type="hidden" name="id" value="<?= $role['id'] ?>">
-                                            <input class="form-check-input" type="checkbox" name="menu_id" <?= check_access($role['id'], $m['id']); ?> value="<?= $m['id']; ?>">
+                                            <?= form_open(); ?>
+                                            <input class="form-check-input" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
+                                            <?= form_close(); ?>
                                         </div>
                                     </td>
                                 </tr>
