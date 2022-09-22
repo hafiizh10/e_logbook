@@ -17,3 +17,11 @@ Jika terjadi error jangan lupa cek file .htaccess nya ada modifikasi sedikit
 - Admin<br>
 Username : zoelva<br>
 Password : 100500
+
+## Donasi [Donation]
+Jika dirasa aplikasi ini bermanfaat, tidak ada salahnya bagi saudara/i yang ingin memberi dukungan melalui :
+> **Bank Jago : No. Rekening 504107213059 An. Hafiizh Zoelva Khairani**<br>
+> **PayPal : https://paypal.me/zoelva12**<br>
+> **Link Trakteer : https://trakteer.id/zoel.va**
+
+Berapapun yang anda kirimkan, saya ucapkan terima kasih banyak.
